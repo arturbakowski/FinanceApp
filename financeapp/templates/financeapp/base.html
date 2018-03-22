@@ -1,0 +1,39 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finance App</title>
+    <link rel="stylesheet" href="{% static 'financeapp/style.css' %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<br>
+
+
+
+    <div class="menu">
+        <div class="logo">
+        <a href="/">Finance App</a>
+        </div>
+            <div class="menu_options">
+                <ul>
+                    <li><a href="/incomes">Incomes</a> </li>
+                    <li><a href="/expenses">Expenses</a> </li>
+                    <li><a href="/analysis">Analysis</a> </li>
+                    <li><a href="/savings">Savings</a> </li>
+                </ul>
+            </div>
+
+    </div>
+
+    <div class="block_content">
+    {% block content %}
+
+    {% endblock %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends 'financeapp/base.html' %}
+
+{% block content %}
+
+    <h1 class="w3-blue" style="text-shadow:1px 1px 0 #444">INCOMES PAGE</h1>
+
+
+<div id="incomes">
+      <p class="w3-wide" style="text-decoration: underline">Enter the income</p>
+
+
+      <form method="POST" action="{% url 'financeapp:add_income' %}">
+          <input class="w3-round" name="income_text_template" id="id_income_text" placeholder="Comment" />
+          <input class="w3-round" name="income_amount_template" id="id_income_amount" placeholder="Amount of income" />
+            {%  for type in incometype %}
+                <input class="w3-radio" style="cursor: pointer" type="radio" name="income_type_template" id="income_type{{ forloop.counter }}" value="{{ type.id}}" />
+                <label>{{ type.type_name }}</label>
+          {% endfor %}
+
+
+          <select name="income_month_template">
+                    <option value="0">Choose month</option>
+                {% for month in months %}
+                    <option value="{{ month.id }}">{{ month.month_name }}</option>
+                {% endfor %}
+                    </select>
+
+
+          <input type="submit" value="Send">
+        {% csrf_token %}
+      </form>
+
+
+
+
+    <table id="incomes_list">
+        <tr>
+            <th>Income</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Month</th>
+        </tr>
+        {% for income in lista_przychodow %}
+        <tr>
+            <td>{{ income.income_name }} </td>
+            <td>{{ income.amount }} </td>
+            <td>{{ income.income_type }}</td>
+            <td>{{ income.income_month }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}
